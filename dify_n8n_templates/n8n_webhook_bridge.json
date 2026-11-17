@@ -1,0 +1,25 @@
+{
+  "name": "OfficeAgent Local Minutes Bridge",
+  "nodes": [
+    {
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "parameters": {"path": "office-minutes", "httpMethod": "POST"}
+    },
+    {
+      "name": "Call OfficeAgent Local API",
+      "type": "n8n-nodes-base.httpRequest",
+      "parameters": {
+        "url": "http://127.0.0.1:8766/api/minutes",
+        "method": "POST",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {"name": "text", "value": "={{$json.body.text}}"},
+            {"name": "title", "value": "={{$json.body.title || '会议纪要'}}"}
+          ]
+        }
+      }
+    }
+  ]
+}

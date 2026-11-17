@@ -1,0 +1,11 @@
+{
+  "tool_name": "office_agent_local",
+  "endpoint": "http://127.0.0.1:8766/api/minutes",
+  "method": "POST",
+  "headers": {"Content-Type": "application/json"},
+  "request_body_example": {
+    "text": "会议主题：周例会\n参会人：张三、李四\n张三：决定周五上线新功能，@李四 明日前补充测试报告。",
+    "title": "周例会"
+  },
+  "response_fields": ["title", "date", "decisions", "actions", "risks", "open_questions", "markdown", "html"]
+}
